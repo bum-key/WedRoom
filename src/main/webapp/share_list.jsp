@@ -11,7 +11,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>WedRoom</title>
-<link href="test/css/main.css?after" rel="stylesheet" type="text/css" />
+<link href="test/css/main.css?af" rel="stylesheet" type="text/css" />
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"

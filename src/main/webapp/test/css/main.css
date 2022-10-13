@@ -6,14 +6,14 @@
 */
 
 @font-face {
-    font-family: 'ImcreSoojin';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.3/ImcreSoojin.woff') format('woff');
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 * {
-	font-family:'ImcreSoojin';
+	font-family:'GangwonEdu_OTFBoldA';
 	margin: 0px;
 	padding: 0px;
 }
