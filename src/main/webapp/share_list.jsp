@@ -24,7 +24,7 @@
 		<!-- 로고 -->
 		<header class="hd">
 			<div class="logo">
-				<a href="index.html"><img src="test/img/logo.png" /></a>
+				<a href="main.jsp"><img src="test/img/logo.png" /></a>
 			</div>
 		</header>
 		<!-- 메뉴바 -->

@@ -42,7 +42,7 @@
 		
 		<%
 			RoomDTO room=new RoomDTO();
-			String filename=room.getFilename();
+			String fileRealname=room.getFileRealname();
 		%>
 		<section>
 			<div class="section">
@@ -79,8 +79,13 @@
 								</tr>
 								<tr>
 									<td>방 사진 :</td>
-									<td colspan="5">
-									<img src="<%=request.getContextPath() %>/fileFolder/${room.filename}" width="400px" height="200px">
+									<c:if test="${room.fileRealname==null}">
+										<td colspan="5">사진이 등록되어 있지 않습니다</td>
+									</c:if>
+									<c:if test="${room.fileRealname!=null}">
+										<td colspan="5"><img src="<%=request.getContextPath() %>/fileFolder/${room.fileRealname}" width="400px" height="200px"></td>
+									</c:if>
+									<%-- <img src="<%=request.getContextPath() %>/fileFolder/${room.fileRealname}" width="400px" height="200px"> --%>
 									<%-- <%
 										String filename=request.getParameter("filename");
 										String directory="/Users/bumkey/국비교육/4.JSP/sou/Project/src/main/webapp/fileFolder";
@@ -91,7 +96,7 @@
 									%>
 										<img src="<%=request.getContextPath() %>/fileFolder/<%=filename %>"> --%>
 										
-										</td>
+										
 									
 								</tr>
 							</tbody>
