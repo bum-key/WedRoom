@@ -1,10 +1,10 @@
 <%@page import="java.io.IOException"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.sql.Timestamp,kbk.board.*"%>
+    pageEncoding="UTF-8" import="java.sql.Timestamp,share.*"%>
     
 
-<%@page import="kbk.board.RoomDTO"%>
-<%@page import="kbk.board.RoomDAO"%>
+<%@page import="share.RoomDTO"%>
+<%@page import="share.RoomDAO"%>
 <%@page import="java.io.File"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>

@@ -1,13 +1,12 @@
 package action;
 
 import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpServletResponse;
 
-import kbk.board.BoardDAO;
-import kbk.board.BoardDTO;
-import kbk.board.MemberDTO;
-import kbk.board.RoomDAO;
-import kbk.board.RoomDTO;
+import member.*;
+import share.RoomDAO;
+import share.RoomDTO;
 
 public class share_UpdateProAction implements CommandAction {
 

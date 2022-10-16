@@ -1,5 +1,5 @@
-<%@page import="kbk.board.RoomDTO"%>
-<%@page import="kbk.board.RoomDAO"%>
+<%@page import="share.RoomDTO"%>
+<%@page import="share.RoomDAO"%>
 <%@page import="java.io.File" %>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>

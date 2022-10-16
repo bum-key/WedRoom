@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import kbk.board.RoomDAO;
-import kbk.board.RoomDTO;
+import share.RoomDAO;
+import share.RoomDTO;
 
 public class share_WriteFormAction implements CommandAction {
 

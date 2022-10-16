@@ -1,6 +1,6 @@
 
 
-<%@page import="kbk.board.RoomDTO"%>
+<%@page import="share.RoomDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -57,6 +57,13 @@
 <%
 			RoomDTO room=new RoomDTO();
 			String filename=room.getFilename();
+			session.setAttribute("id_no", room.getId_no());
+			
+			/* Integer id_no=0;
+			if((Integer)session.getAttribute("id_no") !=null){
+				id_no=(int)session.getAttribute("id_no");
+				System.out.println("session->"+id_no);
+			} */
 %>
 </head>
 <body>

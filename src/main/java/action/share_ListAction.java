@@ -1,11 +1,12 @@
 package action;
 
-import kbk.board.*;
 import java.util.*;
 
 import java.text.SimpleDateFormat;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import share.*;
 
 //1.requestPro()을 공통메소드로 사용 2.객체형변환때문에(상속기법)
 //요청명령어에 해당되는 명령어처리클래스=액션클래스=>스프링(컨트롤러 클래스)

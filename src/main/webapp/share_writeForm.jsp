@@ -1,5 +1,5 @@
-<%@page import="kbk.board.RoomDTO"%>
-<%@page import="kbk.board.RoomDAO"%>
+<%@page import="share.RoomDTO"%>
+<%@page import="share.RoomDAO"%>
 <%@page import="java.io.IOException"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>

@@ -1,8 +1,9 @@
+<%@page import="member.MemberDTO"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="java.io.File" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="kbk.board.*,java.text.SimpleDateFormat"%>
+	pageEncoding="UTF-8" import="share.*,java.text.SimpleDateFormat"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -53,9 +54,14 @@
 			Integer id_no=0;
 			if((Integer)session.getAttribute("id_no") !=null){
 				id_no=(int)session.getAttribute("id_no");
-				System.out.println("session->"+id_no);
+				System.out.println("session room의 id_no->"+id_no);
 			}
-			if(id_no.equals(room.getId_no())) {
+			MemberDTO mem=new MemberDTO();
+			session.setAttribute("id_no", mem.getId_no());
+			
+			
+			System.out.println("member의 id_no->"+mem.getId_no());
+			if(id_no.equals(mem.getId_no())) {
 		%>
 		<section>
 			<div class="section">

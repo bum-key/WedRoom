@@ -1,9 +1,10 @@
 package action;
 
-import kbk.board.*;
 import java.text.SimpleDateFormat;
 import javax.servlet.http.HttpServletRequest; 
 import javax.servlet.http.HttpServletResponse;
+
+import share.*;
 
 public class share_ContentAction implements CommandAction {
 

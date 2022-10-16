@@ -1,8 +1,9 @@
 package action;
 
-import kbk.board.*;
 import javax.servlet.http.HttpServletRequest; 
 import javax.servlet.http.HttpServletResponse;
+
+import share.*;
 
 public class share_DeleteFormAction implements CommandAction {
 
