@@ -23,7 +23,7 @@ public class share_ContentAction implements CommandAction {
 	    request.setAttribute("room", room);
 		
 		
-		return "/share_content.jsp";
+		return "/share/share_content.jsp";
 	}
 
 }

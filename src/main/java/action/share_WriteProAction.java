@@ -86,7 +86,7 @@ public class share_WriteProAction implements CommandAction {
 //		dbPro.insertRoom(room);
 
 		//3.공유->페이지 이동
-		return "/share_writePro.jsp";// /list.do로 처리->/list.jsp
+		return "/share/share_writePro.jsp";// /list.do로 처리->/list.jsp
 	}
 
 }

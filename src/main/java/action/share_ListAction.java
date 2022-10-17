@@ -35,7 +35,7 @@ public class share_ListAction implements CommandAction {
 		request.setAttribute("roomList", roomList);// ${articleList}
 
 		// 3.공유해서 이동할 수 있도록 페이지를 지정
-		return "/share_list.jsp";// 컨트롤러가 이동시키면서 공유시켜준다.->view
+		return "/share/share_list.jsp";// 컨트롤러가 이동시키면서 공유시켜준다.->view
 	}
 
 }

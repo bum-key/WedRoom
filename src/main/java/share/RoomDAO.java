@@ -195,11 +195,13 @@ public class RoomDAO {
 		}
 		return room;
 	}
-
+    
 	// ----중복된 레코드 한개를 담을 수 있는 메서드를 따로 만들어서 처리----
 	private RoomDTO makeRoomFromResult() throws Exception {
+	    //MemberDTO mem=new MemberDTO();
 		RoomDTO room = new RoomDTO();
 		//mem = new MemberDTO();
+		//mem.setId_no(rs.getInt("id_no"));
 		room.setRoom_no(rs.getInt("room_no"));
 		room.setId_no(rs.getInt("id_no"));
 		room.setTitle(rs.getString("title"));

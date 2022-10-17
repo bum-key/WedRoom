@@ -41,7 +41,7 @@ public class share_UpdateProAction implements CommandAction {
 		//request.setAttribute("mem", mem);
 		request.setAttribute("check", check);// 데이터 수정성공유무
 
-		return "/share_updatePro.jsp";
+		return "/share/share_updatePro.jsp";
 	}
 
 }

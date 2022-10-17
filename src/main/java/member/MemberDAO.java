@@ -17,10 +17,10 @@ public class MemberDAO {// XXXXMgr or XXXXDAO
 
     // 3.생성자를 통해서 자동으로 연결하고자 하는 객체를 얻어올 수 있도록 코딩
     public MemberDAO() {
-        System.out.println("DB INFO");
+        //System.out.println("DB INFO");
         try {
             pool = DBConnectionMgr.getInstance();
-            System.out.println("pool=>" + pool);
+            //System.out.println("pool=>" + pool);
         } catch (Exception e) {
             System.out.println("DB연결실패=>" + e);// e.toString()
         }
@@ -36,7 +36,7 @@ public class MemberDAO {// XXXXMgr or XXXXDAO
         // 2.SQL 실행=>결과(웹에 리턴O or 리턴X)
         try {
             con = pool.getConnection();// 이미 만들어진 Connection 반환
-            System.out.println("con=>" + con);
+            //System.out.println("con=>" + con);
             sql = "select id from Member where id=? and password=?";
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, id);

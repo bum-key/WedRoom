@@ -36,7 +36,7 @@ public class share_UpdateFormAction implements CommandAction {
 //		}
 //		//System.out.println("id_no=>"+id_no);
 		
-		return "/share_updateForm.jsp";
+		return "/share/share_updateForm.jsp";
 	}
 
 }

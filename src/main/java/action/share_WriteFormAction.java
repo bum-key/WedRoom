@@ -31,6 +31,6 @@ public class share_WriteFormAction implements CommandAction {
 
         
         // 3.공유해서 이동할 수 있도록 페이지를 지정
-        return "/share_writeForm.jsp";
+        return "/share/share_writeForm.jsp";
     }
 }

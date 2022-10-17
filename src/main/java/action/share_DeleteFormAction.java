@@ -22,7 +22,7 @@ public class share_DeleteFormAction implements CommandAction {
 		request.setAttribute("room", room);
 		
 		
-		return "/share_deleteForm.jsp";
+		return "/share/share_deleteForm.jsp";
 	}
 
 }

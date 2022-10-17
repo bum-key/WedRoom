@@ -4,6 +4,9 @@
 //웹상에서 로그인했는지 안했는지 확인
 String id=(String)session.getAttribute("idKey");
 System.out.println("LoginSuccess.jsp의 id"+id);
+MemberDTO mem=new MemberDTO();
+int id_no=mem.getId_no();
+System.out.println("LoginSuccess.jsp의 id_no"+id_no);
 %>
 
 <!doctype html>
@@ -55,7 +58,7 @@ System.out.println("LoginSuccess.jsp의 id"+id);
   <form name="login" method="post" action="login_Pro.jsp">
   <!-- <form name="login" method="post" action="login"> -->
     <img class="mb-4" src="./image/logo.png" alt="" width="270" height="140">
-
+	<input type="hidden" name="id_no" value="<%=id_no%>">
     <div class="form-floating">
       <input type="text" class="form-control" name="id" id="id" placeholder="아이디">
       <label for="floatingInput">아이디</label>

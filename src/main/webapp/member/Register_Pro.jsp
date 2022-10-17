@@ -33,10 +33,10 @@
 	MemberDAO memberDAO = new MemberDAO();
 	System.out.println(memberDAO.memberInsert(memberDTO));
 	
-	RequestDispatcher rd = null;
-	rd = request.getRequestDispatcher("../main.jsp");
+	/* RequestDispatcher rd = null;
+	rd = request.getRequestDispatcher("src/main/webapp/main.jsp");
 	String result = "회원가입에 성공하였습니다.";
-	request.setAttribute("result", result);
+	request.setAttribute("result", result); */
 	
 	/*
 	 * response.setContentType("text/html; charset=UTF-8"); PrintWriter out =
@@ -48,9 +48,12 @@
 	 * out.close();
 	 */
 	
-	rd.forward(request, response);
+	/* rd.forward(request, response); */
 	%>
 <body>
-
+<script>
+	alert("회원가입에 성공하셨습니다!")
+	location.href="../main.jsp";
+</script>
 </body>
 </html>

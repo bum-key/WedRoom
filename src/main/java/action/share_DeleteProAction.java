@@ -22,7 +22,7 @@ public class share_DeleteProAction implements CommandAction {
 		// 공유
 		request.setAttribute("check", check);// 삭제성공유무
 
-		return "/share_deletePro.jsp";
+		return "/share/share_deletePro.jsp";
 	}
 	
 }
