@@ -67,19 +67,25 @@ public class DBConnectionMgr {
     private static DBConnectionMgr instance = null;
 
   //(2)dbmysql.properties파일을 읽어들여서 키->값을 불러오기
-    public DBConnectionMgr() throws Exception {
-    	Properties props=new Properties();
-    	FileInputStream in=new FileInputStream("C:/webtest/4.jsp/sou/WedRoom/src/main/webapp/dbtest/database.properties");
-    	props.load(in);//파일의 내용을 메모리에 불러오기
-    	in.close();
-    	_driver=props.getProperty("jdbc.drivers");//드라이브만 시스템에 반영
-    	if(_driver!=null)
-    		System.setProperty("jdbc.drivers", _driver);//등록
-    	_url=props.getProperty("jdbc.url");
-    	_user=props.getProperty("jdbc.username");
-    	_password=props.getProperty("jdbc.password");
-    	System.out.println("_driver=>"+(_driver)+", url=>"+(_url));
-    	System.out.println("_user=>"+(_user)+", _password=>"+(_password));
+  //(2)dbmysql.properties파일을 읽어들여서 키->불러들이기
+    public DBConnectionMgr() throws Exception{
+        Properties props=new Properties();
+        //원본->암호화
+        
+        
+        //암호화->복호화
+        FileInputStream in =new FileInputStream("/Users/bumkey/국비교육/4.JSP/sou/Project/src/main/webapp/dbtest/dbmysql.properties");
+        props.load(in);//파일의 내용을 메모리에 불러오기
+        in.close();
+        _driver=props.getProperty("jdbc.drivers");
+        //드라이브만 시스템에 반영
+        if (_driver!=null) {
+            System.setProperty("jdbc.drivers", _driver);
+            _url=props.getProperty("jdbc.url");
+            _user=props.getProperty("jdbc.username");
+            _password=props.getProperty("jdbc.password");
+            //System.out.println("_driver=>"+(_driver)+", _url=>"+(_url)+", _user=>"+(_user)+",+, _password=>"+(_password));
+        }
     }
 
     /** Use this method to set the maximum number of open connections before

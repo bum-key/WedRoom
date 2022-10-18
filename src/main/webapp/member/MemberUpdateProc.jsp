@@ -30,7 +30,7 @@ System.out.println("MemberUpdateProc.jsp의 회원 수정 유무=>"+check);
 %>
 		<script>
 		alert("성공적으로 수정되었습니다.");
-		location.href="Login.jsp";//아직 로그아웃하지 않은 상태
+		location.href="../main.jsp";//아직 로그아웃하지 않은 상태
 		</script>	
 	<% }else{%>
 		<script>

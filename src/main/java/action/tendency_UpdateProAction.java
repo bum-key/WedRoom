@@ -14,7 +14,7 @@ public class tendency_UpdateProAction implements CommandAction {
 		     request.setCharacterEncoding("UTF-8");//한글처리
 		     TendencyDTO tend=new TendencyDTO();
 		     
-		     //tend.setId_no(Integer.parseInt(request.getParameter("id_no")));
+		     tend.setId_no(Integer.parseInt(request.getParameter("id_no")));
 		     tend.setStarttime(request.getParameter("starttime"));
 		     tend.setEndtime(request.getParameter("endtime"));
 		     tend.setSleeptime(request.getParameter("sleeptime"));
@@ -29,6 +29,6 @@ public class tendency_UpdateProAction implements CommandAction {
 		     
 		     request.setAttribute("check", check);//데이터 수정성공유무
 		     
-		return "/free/tendency_updatePro.jsp";
+		return "/tendency/tendency_updatePro.jsp";
 	}
 }

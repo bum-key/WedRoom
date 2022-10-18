@@ -12,7 +12,7 @@
  response.setDateHeader("Expires",0);//보관하지마라
 %>
 <%
-String id=(String)session.getAttribute("idKey");
+String id=(String)session.getAttribute("id");
 System.out.println("MemberUpdate.jsp의 id=>"+id);
 MemberDAO memMgr = new MemberDAO();
 MemberDTO mem = memMgr.getMember(id);
@@ -42,19 +42,19 @@ System.out.println("MemberUpdate.jsp의 객체(mem)=>"+mem);//null
       <div class="input-form col-md-12 mx-auto">
         <h4 class="mb-4"><img src="image/logo.png" id="logo"></h4>
         
-        <form class="validation-form" name="validation-form" action="/member" method="post" novalidate>
+        <form class="validation-form" name="validation-form" action="/MemberUpdateProc.jsp" method="post" novalidate>
        	<div class="col-md-8 mb-4">
-        	<%-- <div class="input-group">
+        	<div class="input-group">
         		<input type="text" class="form-control" name="id" placeholder="아이디" value="<%=mem.getId() %>" readonly required>      
-        	</div> --%>
+        	</div>
         </div>
-        <div class="col-md-8 mb-4">
+        <!-- <div class="col-md-8 mb-4">
             <input type="password" class="form-control" name="password" placeholder="비밀번호 입력" required>
         </div>  
         <div class="col-md-8 mb-4">
             <input type="password" class="form-control" name="repassword" placeholder="비밀번호 재입력" required>
-        </div>
-        <%-- <div id="gendercheck">
+        </div> -->
+        <div id="gendercheck">
             <label for="gender">성별</label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="radio" name="gender" value="<%=mem.getGender() %>" id="male"  onclick="return(false);">
@@ -65,7 +65,7 @@ System.out.println("MemberUpdate.jsp의 객체(mem)=>"+mem);//null
         </div>
         <br>
 		<div class="col-md-8 mb-4">
-            <input type="text" class="form-control" name="birth" value="<%=mem.getBirth() %>" placeholder="생년월일(YYYYMMDD)" required>
+            <input type="text" class="form-control" name="birth" value="<%=mem.getAge()%>" placeholder="생년월일(YYYYMMDD)" required>
         </div>
         <div class="col-md-8 mb-4">
             <input type="number" class="form-control" name="phone" value="<%=mem.getPhone() %>" placeholder="휴대폰 번호 입력( '-' 제외 11자리 입력)" required>
@@ -75,11 +75,11 @@ System.out.println("MemberUpdate.jsp의 객체(mem)=>"+mem);//null
         </div>
         <div class="col-md-8 mb-4">
             <input type="text" class="form-control" name="kakaotalk" value="<%=mem.getKakaotalk() %>" placeholder="카카오톡 오픈채팅 아이디" required>
-        </div> --%>
+        </div>
         <div class="col-md-8 mb-1 text-center">
  	      <button class="btn btn-info btn-lg" type="button" onclick="inputCheck()">수정하기</button>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <button class="btn btn-info btn-lg" type="button" onclick="">탈퇴하기</button>
+          <button class="btn btn-info btn-lg" type="button" onclick="history.back()">뒤로가기</button>
         </div>
         </form>
       
@@ -102,9 +102,9 @@ System.out.println("MemberUpdate.jsp의 객체(mem)=>"+mem);//null
     		document.forms['validation-form'].repassword.focus();
     		return false;
     	}
-    	if(document.forms['validation-form'].birth.value==""){
+    	if(document.forms['validation-form'].age.value==""){
     		alert("생년월일을 입력해주세요.");
-    		document.forms['validation-form'].birth.focus();
+    		document.forms['validation-form'].age.focus();
     		return false;
     	}
     	if(document.forms['validation-form'].phone.value==""){

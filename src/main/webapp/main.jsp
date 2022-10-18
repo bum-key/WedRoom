@@ -1,5 +1,9 @@
+<%@page import="share.RoomDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="share.RoomDTO,member.*"%>
+<jsp:useBean id="tenDao" class="tendency.TendencyDAO" />
+<jsp:useBean id="memMgr" class="member.MemberDAO" />
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -54,14 +58,25 @@
     }
     
 </script>
-
+ <script>
+ function memberRegister(){
+		document.location="./member/agreement.jsp";
+	}
+ </script>
 </head>
 <body>
 <%
+	RoomDTO room=new RoomDTO();
+	String filename=room.getFilename();
+	session.setAttribute("id_no", room.getId_no());
+	
 	String id=null;
 	if(session.getAttribute("id") != null) {
 		id=(String)session.getAttribute("id");
 	}
+	int id_no=memMgr.loginSession(id);
+	System.out.println("session.id=>"+id+", session.id_no=>"+id_no);
+	boolean check=tenDao.checkTendency(id_no);
 %>
     <div class="wrap">
         <!-- 로고 -->
@@ -76,7 +91,11 @@
                 <li class="menu2"><a href="./mate_list.do">룸메이트</a></li>
                 <li class="menu3"><a href="./free_list.do">자유게시판</a></li>
                 <li class="menu4"><a href="./notice_list.do">공지사항</a></li>
-                <li class="menu5"><a href="tendency.do">성향테스트</a></li>
+<%if(check==true){%>
+				<li class="menu5"><a href="tendency_updateForm.do?id_no=<%=id_no%>">성향테스트</a></li>
+<%} else {%>
+                <li class="menu5"><a href="tendency.do?id_no=<%=id_no%>">성향테스트</a></li>
+<%}%>
             </ul>
         </div>
         </header>
@@ -102,7 +121,8 @@
                 </form>
                 <br>
                 <a class="text1" href="#">아이디 | 비밀번호 찾기</a>
-                <a class="text2" href="./member/agreement.jsp">회원가입</a>
+                <!-- <a class="text2" href="./member/agreement.jsp">회원가입</a> -->
+                <a class="text2" onclick="memberRegister()">회원가입</a>
             </nav>
         </div>
 <%
@@ -116,7 +136,7 @@
                 <strong><%=(String)session.getAttribute("id")%>님</strong>
                 <button type="button" class="logout_btn" onclick="location.href='./login/logoutAction.jsp'">로그아웃</button>
                 <br>
-                <a class="text3" href="#">회원수정</a>
+                <a class="text3" href="./member/member_edit.jsp">회원수정</a>
                 <a class="text4" href="#">회원탈퇴</a>
             </nav>
         </div>

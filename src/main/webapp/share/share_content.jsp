@@ -7,6 +7,7 @@
 	pageEncoding="UTF-8" import="share.*,java.text.SimpleDateFormat"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<jsp:useBean id="memMgr" class="member.MemberDAO" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,22 +57,18 @@
 			Integer r_id_no=room.getId_no();
 			System.out.println("room의 id_no->"+r_id_no);
 			
-			Integer id_no=0;
-			if(session.getAttribute("id_no") !=null){
-				id_no=(int)session.getAttribute("id_no");
-				System.out.println("session room의 id_no->"+id_no);
-			}
-			
-			
-			MemberDTO mem=new MemberDTO();
 			String id=null;
 			if(session.getAttribute("id") != null) {
 				id=(String)session.getAttribute("id");
 			}
+			
+			int id_no=memMgr.loginSession(id);
+			System.out.println("session.id=>"+id+", session.id_no=>"+id_no);
+			
+			
+			MemberDTO mem=new MemberDTO();
 			System.out.println("mem id->"+id);
-			//session.getAttribute("id_no");
-			System.out.println("mem id_no->"+mem.getId_no()); 
-			if(r_id_no.equals(mem.getId_no())) {
+			if(r_id_no.equals(id_no)) {
 		%>
 		<section>
 			<div class="section">
@@ -86,7 +83,7 @@
 									<th>방 이름:</th>
 									<th>${room.title}</th>
 									<th>작성자 :</th>
-									<th>${mem.id}</th>
+									<th><%=mem.getId() %></th>
 									<!-- <th>홍길동</th> -->
 								</tr>
 							</thead>

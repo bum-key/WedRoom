@@ -29,26 +29,25 @@ public class TendencyDAO {
 		
 		//3.메서드처리
 		//(0)성향테스트를 했는지 안했는지 체크?
-//		public int checkTendency(int id_no) {
-//			int x=0;
-//			try {
-//				con=pool.getConnection();
-//				System.out.println("con=>"+con);
-//				sql="select count(*) from Tendency where id_no=?";
-//				pstmt=con.prepareStatement(sql);//저장
-//				pstmt.setInt(1, id_no);
-//				rs=pstmt.executeQuery();//실행
-//				if(rs.next()) {//성향테스트를 했을 경우 1
-//					x=rs.getInt(1);
-//				}
-//			} catch(Exception e) {
-//				System.out.println("checkTendency() 에러유발=>"+e);
-//			} finally {
-//				pool.freeConnection(con, pstmt, rs);
-//			}
-//			return x;
-//		}
-//		
+		public boolean checkTendency(int id_no) {
+			boolean check = false;
+			try {
+				con=pool.getConnection();
+				System.out.println("con=>"+con);
+				sql="select * from Tendency where id_no=?";
+				pstmt=con.prepareStatement(sql);//저장
+				pstmt.setInt(1, id_no);
+				rs=pstmt.executeQuery();//실행
+				check=rs.next();// 데이터가 존재 true or 없으면 false
+				System.out.println("checkTendency에서 check값=>"+check);
+			} catch(Exception e) {
+				System.out.println("checkTendency() 에러유발=>"+e);
+			} finally {
+				pool.freeConnection(con, pstmt, rs);
+			}
+			return check;
+		}
+		
 		//1)성향테스트 등록
 		public boolean insertTendency(TendencyDTO tend) {
 			boolean check=false;//성향 등록확인유무
@@ -93,7 +92,7 @@ public class TendencyDAO {
 					tend.setStarttime(rs.getString("starttime"));
 					tend.setEndtime(rs.getString("endtime"));
 					tend.setSleeptime(rs.getString("sleeptime"));
-					tend.setShowertime(rs.getString("shower_time"));
+					tend.setShowertime(rs.getString("showertime"));
 					tend.setSleepinghabbit(rs.getString("sleepinghabbit"));
 					tend.setSmoking(rs.getString("smoking"));
 					tend.setPet(rs.getString("pet"));
@@ -122,7 +121,7 @@ public class TendencyDAO {
 				pstmt.setString(7, tend.getPet());
 				pstmt.setInt(8, tend.getId_no());
 				int update=pstmt.executeUpdate();//반환값 1(성공), 0(실패)
-				con.commit();
+				//con.commit();
 				System.out.println("update(데이터 수정유무)=>"+update);
 				if(update==1) {
 					check=true;//데이터 수정 성공확인

@@ -25,6 +25,25 @@ public class MemberDAO {// XXXXMgr or XXXXDAO
             System.out.println("DB연결실패=>" + e);// e.toString()
         }
     }
+    
+    public int loginSession(String id) {
+        int id_no=0;
+        try {
+            con = pool.getConnection();
+            sql = "select id_no from Member where id=?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, id);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                id_no=rs.getInt(1);
+            }
+        } catch(Exception e) {
+            System.out.println("loginSession() 실행에러유발=>" + e);
+        } finally {
+            pool.freeConnection(con, pstmt, rs);
+        }
+        return id_no;
+    }
 
     // 3.요구 분석에 따른 웹 상에서 호출할 메서드를 작성
     // 1)회원 로그인
@@ -100,7 +119,7 @@ public class MemberDAO {// XXXXMgr or XXXXDAO
                 pstmt.setString(2, mem.getId());
                 pstmt.setString(3, mem.getPassword());
                 pstmt.setString(4, mem.getGender());
-                pstmt.setString(5, mem.getBirth());
+                pstmt.setString(5, mem.getAge());
                 pstmt.setString(6, mem.getPhone());
                 pstmt.setString(7, mem.getEmail());
                 pstmt.setString(8, mem.getKakaotalk());
@@ -139,10 +158,10 @@ public class MemberDAO {// XXXXMgr or XXXXDAO
                 mem = new MemberDTO();
                 mem.setId(rs.getString("id"));
                 mem.setPassword(rs.getString("password"));
-                mem.setGender(rs.getString("gender"));
-                mem.setBirth(rs.getString("birth"));
+                //mem.setGender(rs.getString("gender"));
+                mem.setAge(rs.getString("age"));
                 mem.setPhone(rs.getString("phone"));
-                mem.setEmail(rs.getString("e_mail"));
+                mem.setEmail(rs.getString("email"));
                 mem.setKakaotalk(rs.getString("kakaotalk"));
 
             }
@@ -163,22 +182,20 @@ public class MemberDAO {// XXXXMgr or XXXXDAO
             // 트랜잭션 처리->setAutoCommit(false)=>default:true
             con.setAutoCommit(false);
             // -----------------------------------------
-            sql = "update Member set id=?,password=?,gender=?,age=?,"
+            sql = "update Member set age=?,"
                     + "phone=?,email=?,kakaotalk=? where id=?";
             // con.prepareStatement(실행시킬SQL구문)
             pstmt = con.prepareStatement(sql);
 
-            pstmt.setNString(1, mem.getId());
-            pstmt.setNString(2, mem.getPassword());
-            pstmt.setNString(3, mem.getGender());
-            pstmt.setNString(4, mem.getBirth());
-            pstmt.setNString(5, mem.getPhone());
-            pstmt.setNString(6, mem.getEmail());
-            pstmt.setNString(7, mem.getKakaotalk());
+            pstmt.setString(1, mem.getAge());
+            pstmt.setString(2, mem.getPhone());
+            pstmt.setString(3, mem.getEmail());
+            pstmt.setString(4, mem.getKakaotalk());
+            pstmt.setString(5, mem.getId());
 
             // 반환값 1(성공) 0(실패)
             int update = pstmt.executeUpdate();
-            con.commit();// mysql인 경우에는 생략
+            //con.commit();// mysql인 경우에는 생략
             System.out.println("update(데이터 수정유무)=>" + update);
             if (update == 1) {
                 check = true;// 데이터 수정성공 확인
@@ -223,7 +240,7 @@ public class MemberDAO {// XXXXMgr or XXXXDAO
                     rs = pstmt.executeQuery();
                     int delete = pstmt.executeUpdate();
                     System.out.println("delete(회원탈퇴성공유무)=>" + delete);// 1
-                    con.commit();// 실제 테이블에 반영
+                    //con.commit();// 실제 테이블에 반영
                     x = 1;// 회원 탈퇴 성공
                 } else {// 암호 틀린 경우
                     x = 0;// 회원탈퇴실패

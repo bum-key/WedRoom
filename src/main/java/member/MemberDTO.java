@@ -11,7 +11,7 @@ public class MemberDTO {
 	private String id;//회원 id
 	private String password;//암호
 	private String gender;//성별
-	private String birth;//생년월일
+	private String age;//생년월일
 	private String phone;//전화번호
 	private String email;//이메일
 	private String kakaotalk;//카카오톡
@@ -41,11 +41,11 @@ public class MemberDTO {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public String getBirth() {
-		return birth;
+	public String getAge() {
+		return age;
 	}
-	public void setBirth(String birth) {
-		this.birth = birth;
+	public void setAge(String age) {
+		this.age = age;
 	}
 	public String getPhone() {
 		return phone;
