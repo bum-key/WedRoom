@@ -6,14 +6,14 @@
 */
 
 @font-face {
-    font-family: 'GangwonEdu_OTFBoldA';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-family: 'IM_Hyemin-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Bold.woff2') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 * {
-	font-family:'GangwonEdu_OTFBoldA';
+	font-family:'IM_Hyemin-Bold';
 	margin: 0px;
 	padding: 0px;
 }

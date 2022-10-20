@@ -42,7 +42,7 @@ System.out.println("MemberUpdate.jsp의 객체(mem)=>"+mem);//null
       <div class="input-form col-md-12 mx-auto">
         <h4 class="mb-4"><img src="image/logo.png" id="logo"></h4>
         
-        <form class="validation-form" name="validation-form" action="/MemberUpdateProc.jsp" method="post" novalidate>
+        <form class="validation-form" name="validation-form" action="./MemberUpdateProc.jsp" method="post" novalidate>
        	<div class="col-md-8 mb-4">
         	<div class="input-group">
         		<input type="text" class="form-control" name="id" placeholder="아이디" value="<%=mem.getId() %>" readonly required>      
@@ -54,7 +54,7 @@ System.out.println("MemberUpdate.jsp의 객체(mem)=>"+mem);//null
         <div class="col-md-8 mb-4">
             <input type="password" class="form-control" name="repassword" placeholder="비밀번호 재입력" required>
         </div> -->
-        <div id="gendercheck">
+        <%-- <div id="gendercheck">
             <label for="gender">성별</label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="radio" name="gender" value="<%=mem.getGender() %>" id="male"  onclick="return(false);">
@@ -62,10 +62,10 @@ System.out.println("MemberUpdate.jsp의 객체(mem)=>"+mem);//null
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="radio" name="gender" value="<%=mem.getGender() %>" id="female"  onclick="return(false);">
             <label for="female">여자</label>
-        </div>
+        </div> --%>
         <br>
 		<div class="col-md-8 mb-4">
-            <input type="text" class="form-control" name="birth" value="<%=mem.getAge()%>" placeholder="생년월일(YYYYMMDD)" required>
+            <input type="text" class="form-control" name="age" value="<%=mem.getAge()%>" placeholder="생년월일(YYYYMMDD)" required>
         </div>
         <div class="col-md-8 mb-4">
             <input type="number" class="form-control" name="phone" value="<%=mem.getPhone() %>" placeholder="휴대폰 번호 입력( '-' 제외 11자리 입력)" required>
@@ -92,20 +92,11 @@ System.out.println("MemberUpdate.jsp의 객체(mem)=>"+mem);//null
   
 <script>
     function inputCheck(){
-    	if(document.forms['validation-form'].password.value==""){
-    		alert("비밀번호를 입력해주세요.");
-    		document.forms['validation-form'].password.focus();
-    		return false;
-    	}
-    	if(document.forms['validation-form'].repassword.value==""){
-    		alert("비밀번호를 확인해주세요");
-    		document.forms['validation-form'].repassword.focus();
-    		return false;
-    	}
+    	
     	if(document.forms['validation-form'].age.value==""){
     		alert("생년월일을 입력해주세요.");
     		document.forms['validation-form'].age.focus();
-    		return false;
+    		return;
     	}
     	if(document.forms['validation-form'].phone.value==""){
     		alert("연락처를 입력해주세요.");
@@ -122,11 +113,7 @@ System.out.println("MemberUpdate.jsp의 객체(mem)=>"+mem);//null
     		document.forms['validation-form'].kakaotalk.focus();
     		return false;
     	}
-    	if(document.forms['validation-form'].password.value != document.forms['validation-form'].repassword.value){
-    		alert("비밀번호가 일치하지 않습니다.");
-    		document.forms['validation-form'].repassword.focus();
-    		return false;
-    	}
+    	
     	document.forms['validation-form'].submit(); 
     } 
   </script>

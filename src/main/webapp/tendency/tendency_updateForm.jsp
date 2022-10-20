@@ -29,7 +29,7 @@
                 <li><a href="share_list.do">쉐어하우스</a></li>
                 <li><a href="mate_list.do">룸메이트</a></li>
                 <li><a href="free_list.do">자유게시판</a></li>
-                <li><a href="#">공지사항</a></li>
+                <li><a href="notice_list.do">공지사항</a></li>
                 <li><a href="tendency.do">성향테스트</a></li>
             </ul>
         </nav>
@@ -56,7 +56,7 @@ TendencyDTO tend=tenDao.getTendency(id_no);
                     <option value="09:00" <%="09:00".equals(tend.getStarttime())?" selected":""%>>09:00</option>
                     <option value="10:00" <%="10:00".equals(tend.getStarttime())?" selected":""%>>10:00</option>
                     <option value="11:00" <%="11:00".equals(tend.getStarttime())?" selected":""%>>11:00</option>
-                    <option value="저녁출근" <%="저녁출근".equals(tend.getStarttime())?" selected":""%>>저녁출근</option>
+                    <option value="night" <%="night".equals(tend.getStarttime())?" selected":""%>>night</option>
                 </select>
             </div>
             <div class="selectbox">
@@ -66,7 +66,7 @@ TendencyDTO tend=tenDao.getTendency(id_no);
                     <option value="18:00" <%="18:00".equals(tend.getEndtime())?" selected":""%>>18:00</option>
                     <option value="19:00" <%="19:00".equals(tend.getEndtime())?" selected":""%>>19:00</option>
                     <option value="20:00" <%="20:00".equals(tend.getEndtime())?" selected":""%>>20:00</option>
-                    <option value="기타" <%="기타".equals(tend.getEndtime())?" selected":""%>>기타</option>
+                    <option value="others" <%="others".equals(tend.getEndtime())?" selected":""%>>others</option>
                 </select>
             </div>
             <div class="selectbox">
@@ -82,28 +82,28 @@ TendencyDTO tend=tenDao.getTendency(id_no);
             <div class="selectbox">
                 <h3>4. 샤워시간을 골라주세요.</h3>
                 <select id="showertime" name="showertime">
-                    <option value="오전" <%="오전".equals(tend.getShowertime())?" selected":""%>>오전</option>
-                    <option value="오후" <%="오후".equals(tend.getShowertime())?" selected":""%>>오후</option>
+                    <option value="AM" <%="AM".equals(tend.getShowertime())?" selected":""%>>AM</option>
+                    <option value="PM" <%="PM".equals(tend.getShowertime())?" selected":""%>>PM</option>
                 </select>
             </div>
             <div class="checkbox">
                 <h3>5. 잠버릇유무</h3>
                 <span>있음</span>
-                <input type="radio" name="sleepinghabbit" value="Yes" <%="Yes".equals(tend.getSleepinghabbit())?" checked":""%>>
+                <input type="radio" name="sleepinghabbit" value="YES" <%="YES".equals(tend.getSleepinghabbit())?" checked":""%>>
                 <span>없음</span>
                 <input type="radio" name="sleepinghabbit" value="NO" <%="NO".equals(tend.getSleepinghabbit())?" checked":""%>>
             </div>
             <div class="checkbox">
                 <h3>6. 흡연유무</h3>
                 <span>흡연</span>
-                <input type="radio" name="smoking" value="Yes" <%="Yes".equals(tend.getSmoking())?" checked":""%>>
+                <input type="radio" name="smoking" value="YES" <%="YES".equals(tend.getSmoking())?" checked":""%>>
                 <span>비흡연</span>
                 <input type="radio" name="smoking" value="NO" <%="NO".equals(tend.getSmoking())?" checked":""%>>
             </div>
             <div class="checkbox">
                 <h3>7. 반려동물</h3>
                 <span>있음</span>
-                <input type="radio" name="pet" value="Yes" <%="Yes".equals(tend.getPet())?" checked":""%>>
+                <input type="radio" name="pet" value="YES" <%="YES".equals(tend.getPet())?" checked":""%>>
                 <span>없음</span>
                 <input type="radio" name="pet" value="NO" <%="NO".equals(tend.getPet())?" checked":""%>>
             </div>

@@ -1,5 +1,7 @@
 package member;
 
+import mate.*;
+
 /*
 RegisterDTO.java
 작성날짜 : 2022-09-13
@@ -17,7 +19,9 @@ public class MemberDTO {
 	private String kakaotalk;//카카오톡
 	
 	
-	public int getId_no() {
+	
+	
+    public int getId_no() {
         return id_no;
     }
     public void setId_no(int id_no) {

@@ -39,7 +39,7 @@
       <div class="input-form col-md-12 mx-auto">
         <h4 class="mb-4"><img src="image/logo.png" id="logo"></h4>
         
-        <form class="validation-form" id="registerForm" name="validation-form" action="Register_Pro.jsp" method="post" novalidate>
+        <form class="validation-form" id="registerForm" name="validation" action="Register_Pro.jsp" method="post" novalidate>
             <div class="col-md-8 mb-4">
              <div class="input-group">
              <input type="hidden" name="id_no" value="<%=id_no%>">
@@ -60,15 +60,15 @@
           <div id="gendercheck">
             <label for="gender">성별</label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="radio" name="gender" value="m" id="male">
+            <input type="radio" name="gender" value="MAN" id="male">
             <label for="male">남자</label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="radio" name="gender" value="f" id="female">
+            <input type="radio" name="gender" value="WOMAN" id="female">
             <label for="female">여자</label>
           </div>
           <br>
 		  <div class="col-md-8 mb-4">
-            <input type="text" class="form-control" name="birth" placeholder="생년월일(YYYYMMDD)" required>
+            <input type="text" class="form-control" name="age" placeholder="생년월일(YYYYMMDD)" required>
           </div>
           <div class="col-md-8 mb-4">
             <input type="number" class="form-control" name="phone" placeholder="휴대폰 번호 입력( '-' 제외 11자리 입력)" required>
@@ -80,7 +80,7 @@
             <input type="text" class="form-control" name="kakaotalk" placeholder="카카오톡 오픈채팅 아이디" required>
           </div>
           <div class="col-md-8 mb-1 text-center">
-          <button class="btn btn-info btn-lg" type="submit" onclick="inputCheck()">가입하기</button>
+          <button class="btn btn-info btn-lg" type="button" onclick="inputCheck()">가입하기</button>
         </div>
         </form>
       </div>
@@ -116,52 +116,57 @@
 } */
 
 function inputCheck(){
-	if(document.forms['validation-form'].id.value==""){
-		alert("아이디를 입력해주세요.");
-		document.forms['validation-form'].id.focus();
-		return false;
+	var frm =document.validation
+	
+	if (frm.id.value.length < 1) {
+		alert("아이디를 입력해주세요");
+		frm.id.focus();
+		return;
 	}
-	if(document.forms['validation-form'].password.value==""){
-		alert("비밀번호를 입력해주세요.");
-		document.forms['validation-form'].password.focus();
-		return false;
+	if (frm.password.value.length < 1) {
+		alert("비밀번호를 입력해주세요");
+		frm.password.focus();
+		return;
 	}
-	if(document.forms['validation-form'].repassword.value==""){
-		alert("비밀번호를 확인해주세요");
-		document.forms['validation-form'].repassword.focus();
-		return false;
+	if (frm.repassword.value.length < 1) {
+		alert("비밀번호 확인을 입력해주세요");
+		frm.repassword.focus();
+		return;
 	}
-	if(document.forms['validation-form'].gender.value==""){
-		alert("성별을 체크해주세요.");
-		document.forms['validation-form'].gender.focus();
-		return false;
+	if (frm.age.value.length < 1) {
+		alert("생년월일을 입력해주세요");
+		frm.age.focus();
+		return;
 	}
-	if(document.forms['validation-form'].birth.value==""){
-		alert("생년월일을 입력해주세요.");
-		document.forms['validation-form'].birth.focus();
-		return false;
+	if (frm.phone.value.length < 1) {
+		alert("전화번호를 입력해주세요");
+		frm.kakaotalk.focus();
+		return;
 	}
-	if(document.forms['validation-form'].phone.value==""){
-		alert("연락처를 입력해주세요.");
-		document.forms['validation-form'].phone.focus();
-		return false;
+	
+	if (frm.email.value.length < 1) {
+		alert("이메일을 입력해주세요");
+		frm.email.focus();
+		return;
 	}
-	if(document.forms['validation-form'].email.value==""){
-		alert("이메일을 입력해주세요.");
-		document.forms['validation-form'].email.focus();
-		return false;
+	
+	if (frm.kakaotalk.value.length < 1) {
+		alert("카카오톡 아이디를 입력해주세요");
+		frm.id.focus();
+		return;
 	}
-	if(document.forms['validation-form'].kakaotalk.value==""){
-		alert("카카오톡 아이디를 입력해주세요.");
-		document.forms['validation-form'].kakaotalk.focus();
-		return false;
+	if (frm.password.value != frm.repassword.value) {
+		alert("비밀번호와 비밀번호 확인란이 일치하지 않습니다..");
+		frm.password.value = "";
+		frm.repassword.value = "";
+		frm.password.focus();
+		return
+
 	}
-	if(document.forms['validation-form'].password.value != document.forms['validation-form'].repassword.value){
-		alert("비밀번호가 일치하지 않습니다.");
-		document.forms['validation-form'].repassword.focus();
-		return false;
-	}
-	document.forms['validation-form'].submit(); 
+
+	frm.method = "post";
+	frm.action = "Register_Pro.jsp"; //넘어간화면
+	frm.submit();
 } 
 </script>
 </body>

@@ -50,7 +50,7 @@
                     <option value="09:00">09:00</option>
                     <option value="10:00">10:00</option>
                     <option value="11:00">11:00</option>
-                    <option value="저녁출근">저녁출근</option>
+                    <option value="night">night</option>
                 </select>
             </div>
             <div class="selectbox">
@@ -60,7 +60,7 @@
                     <option value="18:00">18:00</option>
                     <option value="19:00">19:00</option>
                     <option value="20:00">20:00</option>
-                    <option value="기타">기타</option>
+                    <option value="others">others</option>
                 </select>
             </div>
             <div class="selectbox">
@@ -76,28 +76,28 @@
             <div class="selectbox">
                 <h3>4. 샤워시간을 골라주세요.</h3>
                 <select id="showertime" name="showertime">
-                    <option value="오전">오전</option>
-                    <option value="오후">오후</option>
+                    <option value="AM">AM</option>
+                    <option value="PM">PM</option>
                 </select>
             </div>
             <div class="checkbox">
                 <h3>잠버릇유무</h3>
                 <span>있음</span>
-                <input type="radio" name="sleepinghabbit" value="Yes">
+                <input type="radio" name="sleepinghabbit" value="YES">
                 <span>없음</span>
                 <input type="radio" name="sleepinghabbit" value="NO">
             </div>
             <div class="checkbox">
                 <h3>흡연유무</h3>
                 <span>흡연</span>
-                <input type="radio" name="smoking" value="Yes">
+                <input type="radio" name="smoking" value="YES">
                 <span>비흡연</span>
                 <input type="radio" name="smoking" value="NO">
             </div>
             <div class="checkbox">
                 <h3>반려동물</h3>
                 <span>있음</span>
-                <input type="radio" name="pet" value="Yes">
+                <input type="radio" name="pet" value="YES">
                 <span>없음</span>
                 <input type="radio" name="pet" value="NO">
             </div>

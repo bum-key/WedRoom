@@ -83,7 +83,7 @@
 									<th>방 이름:</th>
 									<th>${room.title}</th>
 									<th>작성자 :</th>
-									<th><%=mem.getId() %></th>
+									<th>${member.id}</th>
 									<!-- <th>홍길동</th> -->
 								</tr>
 							</thead>
@@ -160,7 +160,7 @@
 									<th>방 이름:</th>
 									<th>${room.title}</th>
 									<th>작성자 :</th>
-									<th><%=id %></th>
+									<th>${member.id}</th>
 								</tr>
 							</thead>
 							<tbody>

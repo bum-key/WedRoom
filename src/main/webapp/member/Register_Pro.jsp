@@ -14,7 +14,7 @@
 	String id = request.getParameter("id");
 	String password = request.getParameter("password");
 	String gender = request.getParameter("gender");
-	String birth = request.getParameter("birth");
+	String age = request.getParameter("age");
 	String phone = request.getParameter("phone");
 	String email = request.getParameter("email");
 	String kakaotalk = request.getParameter("kakaotalk");
@@ -25,7 +25,7 @@
 	memberDTO.setId(id);
 	memberDTO.setPassword(password);
 	memberDTO.setGender(gender);
-	memberDTO.setBirth(birth);
+	memberDTO.setAge(age);
 	memberDTO.setPhone(phone);
 	memberDTO.setEmail(email);
 	memberDTO.setKakaotalk(kakaotalk);

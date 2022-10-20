@@ -2,9 +2,17 @@
 추가로 등록할 css
 */
 
+@font-face {
+    font-family: 'IM_Hyemin-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Bold.woff2') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
-  margin:0px;
-  padding:0px;
+	font-family:'IM_Hyemin-Bold';
+	margin: 0px;
+	padding: 0px;
 }
 .wrap {
   width:1200px;
@@ -143,10 +151,40 @@ top:25px;
   
 }
 
-.mini_s{
+.mini_1{
+  width: auto;
+  height: auto;
+  background-color: #FF7E9D;
+  border-radius: 20%;
+}
+.mini_2{
+  width: auto;
+  height: auto;
+  background-color: #A0D1F7;
+  border-radius: 20%;
+}
+.mini_3{
   width: auto;
   height: auto;
   background-color: lightgray;
+  border-radius: 20%;
+}
+.mini_4{
+  width: auto;
+  height: auto;
+  background-color: #CEBEE1;
+  border-radius: 20%;
+}
+.mini_5{
+  width: auto;
+  height: auto;
+  background-color: #6EE5A3;
+  border-radius: 20%;
+}
+.mini_6{
+  width: auto;
+  height: auto;
+  background-color: #FAFABE;
   border-radius: 20%;
 }
 

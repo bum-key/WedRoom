@@ -55,7 +55,7 @@ System.out.println("LoginSuccess.jsp의 id_no"+id_no);
 
 
 <main class="form-signin">
-  <form name="login" method="post" action="login_Pro.jsp">
+  <form name="login" method="post" action="./login/login_Pro.jsp">
   <!-- <form name="login" method="post" action="login"> -->
     <img class="mb-4" src="./image/logo.png" alt="" width="270" height="140">
 	<input type="hidden" name="id_no" value="<%=id_no%>">

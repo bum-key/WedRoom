@@ -223,7 +223,7 @@ public class MemberDAO {// XXXXMgr or XXXXDAO
 
         try {
             con = pool.getConnection();// 커넥션풀(미리 만들어서 주는 경우)
-            con.setAutoCommit(false);
+            //con.setAutoCommit(false);
             sql = "select password from Member where id=?";
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, id);
@@ -237,7 +237,7 @@ public class MemberDAO {// XXXXMgr or XXXXDAO
                     sql = "delete from Member where id=?";
                     pstmt = con.prepareStatement(sql);
                     pstmt.setString(1, id);
-                    rs = pstmt.executeQuery();
+                    //rs = pstmt.executeQuery();
                     int delete = pstmt.executeUpdate();
                     System.out.println("delete(회원탈퇴성공유무)=>" + delete);// 1
                     //con.commit();// 실제 테이블에 반영
@@ -257,4 +257,69 @@ public class MemberDAO {// XXXXMgr or XXXXDAO
         return x;
     }
 
+    //id검색
+    public String findId(String kakaotalk) {
+        String find_id = null;
+        
+        try {
+            con = pool.getConnection();// 커넥션풀(미리 만들어서 주는 경우)
+            String sql = "select id from Member where kakaotalk=? ";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1,kakaotalk);
+            rs = pstmt.executeQuery();
+            
+            if(rs.next()) {
+                find_id = rs.getString("id");
+            }
+                
+        } catch (Exception e) {
+            System.out.println("findId() 에러유발=>" + e);
+        }
+        return find_id;
+    }
+    
+    //pw검색
+    public String findPw(String id, String email) {
+        String find_pw = null;
+        
+        try {
+            con = pool.getConnection();// 커넥션풀(미리 만들어서 주는 경우)
+            String sql = "select password from Member where id=? and email=?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1,id);
+            pstmt.setString(2,email);
+            rs = pstmt.executeQuery();
+            
+            if(rs.next()) {
+                find_pw = rs.getString("password");
+            }
+                
+        } catch (Exception e) {
+            System.out.println("findPw() 에러유발=>" + e);
+        }
+        return find_pw;
+    }
+    
+    //pw변경
+    public int modifyPassword(String id,String currPassword, String newPassword) {
+        int rows=0;
+        
+        try {
+            con = pool.getConnection();
+            String sql = "update Member set password=? where id=? and password=?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1,newPassword);
+            pstmt.setString(2,id);
+            pstmt.setString(3,currPassword);
+            
+            //update시 비번 변경 성공시 1 반환 그렇지않으면 0반환
+            rows=pstmt.executeUpdate();
+        } catch (Exception e) {
+            // TODO: handle exception
+            System.out.println("modifyPassword() 에러유발=>" + e);
+        } finally {
+            pool.freeConnection(con, pstmt, rs);
+        }
+        return rows;
+    }
 }

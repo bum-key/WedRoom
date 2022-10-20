@@ -184,8 +184,10 @@ public class RoomDAO {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {// 보여주는 결과가 있다면
 				room = makeRoomFromResult();
-				System.out.println("room.filenmae=>"+room.getFilename());
-				//mem.setId_no(rs.getInt("id_no"));
+				
+				MemberDTO member=new MemberDTO();
+				member.setId(rs.getString("id"));
+		        room.setMember(member);
 			}
 
 		} catch (Exception e) {
@@ -198,10 +200,8 @@ public class RoomDAO {
     
 	// ----중복된 레코드 한개를 담을 수 있는 메서드를 따로 만들어서 처리----
 	private RoomDTO makeRoomFromResult() throws Exception {
-	    //MemberDTO mem=new MemberDTO();
-		RoomDTO room = new RoomDTO();
-		//mem = new MemberDTO();
-		//mem.setId_no(rs.getInt("id_no"));
+	    RoomDTO room = new RoomDTO();
+	    
 		room.setRoom_no(rs.getInt("room_no"));
 		room.setId_no(rs.getInt("id_no"));
 		room.setTitle(rs.getString("title"));
@@ -216,6 +216,9 @@ public class RoomDAO {
 		//추가
 		room.setFilename(rs.getString("filename"));
 		room.setFileRealname(rs.getString("fileRealname"));
+		
+//		MemberDTO mem=new MemberDTO();
+//        mem.setId(rs.getString("id"));
 		return room;
 	}
 

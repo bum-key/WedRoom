@@ -9,26 +9,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WedRoom</title>
-    <link href="./css/free.css" rel="stylesheet" type="text/css">
+    <link href="css/free.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <div class="wrap">
         <!-- 로고 -->
-		<header class="hd">
-			<div class="logo">
-				<a href="./main.jsp"><img src="./img/logo.png" /></a>
-			</div>
-		</header>
-		<!-- 메뉴바 -->
-		<nav class="nav">
-			<ul class="menu">
-				<li><a href="share_list.do">쉐어하우스</a></li>
-				<li><a href="mate_list.do">룸메이트</a></li>
-				<li><a href="free_list.do">자유게시판</a></li>
-				<li><a href="notice_list.do">공지사항</a></li>
-				<li><a href="tendency.do">성향테스트</a></li>
-			</ul>
-		</nav>
+        <header class="hd">
+            <div class="logo">
+                <a href="main.jsp"><img src="image/logo.png"></a>
+            </div>
+        </header>
+        <!-- 메뉴바 -->
+        <nav class="nav">
+            <ul class="menu">
+                <li><a href="share_list.do">쉐어하우스</a></li>
+                <li><a href="mate_list.do">룸메이트</a></li>
+                <li><a href="free_list.do">자유게시판</a></li>
+                <li><a href="#">공지사항</a></li>
+                <li><a href="tendency.do">성향테스트</a></li>
+            </ul>
+        </nav>
         <!-- 자유게시판(본문) -->
         <article class="freeboard">
             <p class="tiele">자유게시판</p>
@@ -88,6 +88,9 @@
                         </tr>
                         </thead>
                         <tbody>
+<%
+	if(id != null) {
+%>                        
                         <c:set var="number"  value="${pgList.number}" />
     					<c:forEach var="article"  items="${articleList}">
                         <tr>
@@ -100,12 +103,26 @@
                             <td>${article.views}</td>
                         </tr>
                         </c:forEach>
+<%} else { %>
+						<c:set var="number"  value="${pgList.number}" />
+    					<c:forEach var="article"  items="${articleList}">
+                        <tr>
+                            <%-- <td><c:out value="${number}" /><c:set var="number"  value="${number-1}" /></td> --%>
+                            <td>${article.free_no}</td>
+                            <!-- num(게시물번호),pageNum(페이지번호) -->
+                            <td><a href="/Project/main.jsp" onclick="alert('로그인 후 이용이 가능합니다.')">${article.title}</a></td>
+                            <td>${article.id}</td>
+                            <td><fmt:formatDate value="${article.created_datetime}"  timeStyle="medium" pattern="yy.MM.dd" /></td>
+                            <td>${article.views}</td>
+                        </tr>
+                        </c:forEach>
+<%}%>
                         </tbody>
                     </table>
             		<!-- 페이징 처리 -->
                     <div class="paging">
                      <%-- <c:if test="${pgList.startPage > pgList.blockSize}">
-     					<a href="/Project/free_list.do?pageNum=${pgList.startPage-pgList.blockSize}&search=${search}&searchtext=${searchtext}" class="prev"><img src="./image/left-next.png"></a>
+     					<a href="/WedRoom0/free_list.do?pageNum=${pgList.startPage-pgList.blockSize}&search=${search}&searchtext=${searchtext}" class="prev"><img src="./image/left-next.png"></a>
  					</c:if> --%>
  						<a href="/Project/free_list.do?pageNum=${pgList.startPage}&search=${search}&searchtext=${searchtext}" class="prev"><img src="./image/left-next.png"></a>
 					
@@ -121,7 +138,7 @@
 					</c:forEach>
 					
  					<%-- <c:if test="${pgList.endPage <pgList.pageCount}">
-					     <a href="/Project/free_list.do?pageNum=${pgList.startPage+pgList.blockSize}&search=${search}&searchtext=${searchtext}" class="next"><img src="./image/right-next.png"></a>
+					     <a href="/WedRoom0/free_list.do?pageNum=${pgList.startPage+pgList.blockSize}&search=${search}&searchtext=${searchtext}" class="next"><img src="./image/right-next.png"></a>
  					</c:if> --%> 
  						<a href="/Project/free_list.do?pageNum=${pgList.endPage}&search=${search}&searchtext=${searchtext}" class="next"><img src="./image/right-next.png"></a>
                     </div>

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"  import="free.board.*" %>
+    pageEncoding="UTF-8"  import="free.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -7,11 +7,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
     <title>WedRoom</title>
     <link href="css/free.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="js/board.js"></script>
+    <script type="text/javascript" src="js/board.js?ver=1"></script>
 </head>
-<body>
+<body> 
 <%
 	String id=null;
 	if(session.getAttribute("id") != null) {
@@ -20,21 +21,21 @@
 %>
     <div class="wrap">
         <!-- 로고 -->
-		<header class="hd">
-			<div class="logo">
-				<a href="./main.jsp"><img src="./img/logo.png" /></a>
-			</div>
-		</header>
-		<!-- 메뉴바 -->
-		<nav class="nav">
-			<ul class="menu">
-				<li><a href="share_list.do">쉐어하우스</a></li>
-				<li><a href="mate_list.do">룸메이트</a></li>
-				<li><a href="free_list.do">자유게시판</a></li>
-				<li><a href="notice_list.do">공지사항</a></li>
-				<li><a href="tendency.do">성향테스트</a></li>
-			</ul>
-		</nav>
+        <header class="hd">
+            <div class="logo">
+                <a href="main.jsp"><img src="image/logo.png"></a>
+            </div>
+        </header>
+        <!-- 메뉴바 -->
+        <nav class="nav">
+            <ul class="menu">
+                <li><a href="share_list.do">쉐어하우스</a></li>
+                <li><a href="mate_list.do">룸메이트</a></li>
+                <li><a href="free_list.do">자유게시판</a></li>
+                <li><a href="notice_list.do">공지사항</a></li>
+                <li><a href="tendency.do">성향테스트</a></li>
+            </ul>
+        </nav>
         <!-- 게시글 작성 -->
         <article class="free_write">
             <p class="tiele">자유게시판 작성</p>
@@ -90,5 +91,6 @@
             </p>
         </footer>
     </div>
+
 </body>
 </html>

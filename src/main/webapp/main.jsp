@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WedRoom</title>
-    <link href="css/wedroomstyle.css" rel="stylesheet" type="text/css">
+    <link href="css/wedroomstyle.css?1" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"/>
 
@@ -120,7 +120,7 @@
                     <button type="submit" class="login_btn" onclick="">로그인</button>
                 </form>
                 <br>
-                <a class="text1" href="#">아이디 | 비밀번호 찾기</a>
+                <a class="text1" href="./member/memberFind.jsp">아이디 | 비밀번호 찾기</a>
                 <!-- <a class="text2" href="./member/agreement.jsp">회원가입</a> -->
                 <a class="text2" onclick="memberRegister()">회원가입</a>
             </nav>
@@ -137,7 +137,8 @@
                 <button type="button" class="logout_btn" onclick="location.href='./login/logoutAction.jsp'">로그아웃</button>
                 <br>
                 <a class="text3" href="./member/member_edit.jsp">회원수정</a>
-                <a class="text4" href="#">회원탈퇴</a>
+                <a class="text4" href="./member/member_deleteForm.jsp">회원탈퇴</a>
+                <a class="text5" href="./member/passwordModify.jsp">비밀번호 변경</a>
             </nav>
         </div>
 <%}%>

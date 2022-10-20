@@ -12,9 +12,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>WedRoom</title>
-<script language="JavaScript" src="./js/scripts.js?ver1"></script>
+<script language="JavaScript" src="./js/scripts.js?ver2"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<link href="./css/main.css?af" rel="stylesheet" type="text/css" />
+<link href="./css/main.css?after" rel="stylesheet" type="text/css" />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"

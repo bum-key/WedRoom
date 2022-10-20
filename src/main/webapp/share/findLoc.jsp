@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="test/css/main.css" rel="stylesheet" type="text/css"
+<link href="../css/main.css" rel="stylesheet" type="text/css"
 	media="screen and (max-width:2470px)">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <title>지도에서 주소찾기</title>

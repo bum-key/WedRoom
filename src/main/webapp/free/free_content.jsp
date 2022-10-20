@@ -36,7 +36,7 @@
 	int free_no=Integer.parseInt(request.getParameter("free_no"));
 	System.out.println("free_content.jsp에서 free_no=>"+free_no);
 	FreeDAO dbPro=new FreeDAO();
-	FreeDTO article=dbPro.getArticle(free_no);	
+	FreeDTO article=dbPro.updateGetArticle(free_no);
 
 	String id=null;
 	if(session.getAttribute("id") != null) {

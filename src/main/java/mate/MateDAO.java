@@ -122,7 +122,7 @@ public class MateDAO {
 			String sleepTime = ten.getSleeptime();
 			String smoking = ten.getSmoking();
 			String pet = ten.getPet();
-			String sleepHabbit = ten.getSleepinghabbit();
+			String sleepingHabbit = ten.getSleepinghabbit();
 			String showerTime = ten.getShowertime();
 			try {
 				con=pool.getConnection();
@@ -130,7 +130,10 @@ public class MateDAO {
 			//	sql = "select b.* from (select rownum as rn, a.* from (select a.*, b.sleeptime, b.smoking, b.pet, b.sleepinghabbit, b.showertime, b.starttime, b.endtime , c.id from friend a inner join tendency b on a.id_no = b.id_no inner join member c on b.id_no=c.id_no where 1=1 order by  a.mate_no desc)a) b where (b.rn >? AND b.rn <=?)";
 			//sql = "select a.*, b.smoking, b.pet, b.sleepinghabbit, c.id from friend a inner join tendency b on a.id_no = b.id_no "
 			//		+ "inner join member c on b.id_no=c.id_no where 1=1";
-				sql = "select a.*, b.sleeptime, b.smoking, b.pet, b.sleepinghabbit, b.showertime, b.starttime, b.endtime , c.id from friend a inner join tendency b on a.id_no = b.id_no inner join member c on b.id_no=c.id_no where 1=1";
+//				sql = "select a.*, b.sleeptime, b.smoking, b.pet, b.sleepinghabbit, b.showertime, b.starttime, b.endtime , c.id from friend a inner join tendency b on a.id_no = b.id_no inner join member c on b.id_no=c.id_no where 1=1 ";
+				sql ="SELECT  @ROWNUM:=@ROWNUM+1 as ROWNUM , a.* ,b.sleeptime, b.smoking, b.pet, b.sleepinghabbit, b.showertime, b.starttime, b.endtime , c.id\r\n"
+				        + "FROM Friend a Inner JOIN tendency b  \r\n"
+				        + "ON a.id_no = b.id_no inner join member c on b.id_no=c.id_no AND 1=1 ";
 				if(starttime !=null && !starttime.equals("")) 
 					sql += "and b.starttime ='"+starttime+"'";
 				if(endtime !=null && !endtime.equals("")) 
@@ -141,8 +144,8 @@ public class MateDAO {
 					sql += "and b.smoking ='"+smoking+"'";
 				if(pet !=null && !pet.equals("")) 
 					sql += "and b.pet ='"+pet+"'";
-				if(sleepHabbit !=null && !sleepHabbit.equals("")) 
-					sql += "and b.sleepinghabbit ='"+sleepHabbit+"'";
+				if(sleepingHabbit !=null && !sleepingHabbit.equals("")) 
+					sql += "and b.sleepinghabbit ='"+sleepingHabbit+"'";
 				if(showerTime !=null && !showerTime.equals("")) 
 					sql += "and b.showertime ='"+showerTime+"'";
 			/*
@@ -161,14 +164,16 @@ public class MateDAO {
 				*/
 			//	sql += "and (rownum > ? and rownum <= ?)";
 																								//sql += "and (rownum >= "+start+" and rownum <= "+end +")";
-				sql += " order by  a.mate_no desc";
+				sql += ",(SELECT @ROWNUM:=0 )  R \r\n"
+				        + "order by a.mate_no desc\r\n"
+				        + "limit ?,?";
 				
 
 				System.out.println("getFriendArticles()의 sql=>"+sql);
 				//---------------------------------------------------------------------------
 				pstmt=con.prepareStatement(sql);
-	//임시주석			pstmt.setInt(1,start-1);
-	//			pstmt.setInt(2,start-1+end);
+				pstmt.setInt(1,start-1);
+				pstmt.setInt(2,start-1+end);
 	          	
 //				pstmt.setInt(1, start);//mysql은 레코드순번이 내부적으로 0시작
 //				pstmt.setInt(2, end);//불러와서 담을 갯수(ex 10)
@@ -220,7 +225,7 @@ public class MateDAO {
 					Hashtable<String,Integer>pgList=new Hashtable<String,Integer>();
 			
 					int pageSize=12;//=numPerPage=>페이지당 보여주는 게시물수 
-					int blockSize=10;//=pagePerBlock=>블럭당 보여주는 페이지수
+					int blockSize=12;//=pagePerBlock=>블럭당 보여주는 페이지수
 					
 				//게시판을 맨 처음 실행시키면 무조건 1페이지부터 출력->가장 최근의 글부터 출력
 				if(pageNum==null || pageNum.equals("")){
@@ -337,7 +342,7 @@ public class MateDAO {
 			//sql = "select mate_no, id_no, writer, title, gender, to_char(created_datetime,'yyyy-mm-dd') as created_datetime, lifestyle, views, other_matter"
 			//		+ " from friend where mate_no=?";
 			
-			sql = "select a.mate_no, a.id_no, a.title, a.gender, DATE_FORMAT(a.created_datetime,'yyyy-mm-dd') as created_datetime, "
+			sql = "select a.mate_no, a.id_no, a.title, a.gender, DATE_FORMAT(a.created_datetime,'%Y.%m.%d') as created_datetime, "
 					+ "a.lifestyle, a.views, a.other_matter, a.filename, a.fileRealname, b.* , c.id "
 					+ "from friend a inner join tendency b on a.id_no=b.id_no inner join member c on b.id_no=c.id_no where a.mate_no=?";
 			
