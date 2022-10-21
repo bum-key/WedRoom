@@ -141,9 +141,9 @@
                                 <tr>
                                     <td bgcolor="#F5F5F5"><b>성향</b></td>
                                     <td colspan="3">
-                                    <p>
-                                    	흡연: ${smoking} 수면시간: ${sleeptime}  반려동물: ${pet} 잠버릇: ${sleepinghabbit} <br>
-                                    	샤워시간: ${showertime} 출근시간: ${starttime} 퇴근시간: ${endtime}
+                                    출근시간: ${starttime} 퇴근시간: ${endtime}<br>
+                                    수면시간: ${sleeptime} 샤워시간: ${showertime} <br> 
+                                    흡연 : ${smoking} 반려동물: ${pet} 잠버릇: ${sleepinghabbit} <br>
                                         <input type="hidden" class="pf_input" style="width: 100%; height:120px"
                                         value="<c:out value="흡연: ${smoking} 수면시간: ${sleeptime}  반려동물: ${pet} 잠버릇: ${sleepinghabbit} 샤워시간: ${showertime} 출근시간: ${starttime} 퇴근시간: ${endtime}"  />"  >
 									</p>

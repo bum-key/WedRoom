@@ -42,7 +42,14 @@
 	if(session.getAttribute("id") != null) {
 		id=(String)session.getAttribute("id");
 	}
-	if(id.equals(article.getId())) {
+	if(id==null){
+		%>
+		<script type="text/javascript">
+			alert("로그인 후 이용가능합니다!")
+			history.back()
+		</script>
+<%
+	}else if(id.equals(article.getId())) {
 %>
             <div class="board_control">
                 <a href="#" class="notice_update" onclick="document.location.href='/Project/notice_updateForm.do?notice_no=${article.notice_no}&pageNum=${pageNum}'">수정</a>&nbsp;&nbsp;

@@ -36,7 +36,7 @@ System.out.println("MemberUpdateProc.jsp의 회원 삭제 유무=>"+check);
 %>
 		<script>
 		<% session.invalidate();  %> // 삭제했다면 세션정보를 삭제한다.
-		alert("성공적으로 탈퇴가 되었습니다.");
+		alert("성공적으로 탈퇴가 되었습니다. \n 작성했던 글들은 모두 삭제되었습니다!");
 		location.href="../main.jsp";//아직 로그아웃하지 않은 상태
 		</script>	
 	<% }else{%>

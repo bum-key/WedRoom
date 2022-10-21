@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>WedRoom</title>
-<script language="JavaScript" src="test/js/scripts.js"></script>
+<script language="JavaScript" src="./js/scripts.js?ver1"></script>
 <link href="./css/main.css?af" rel="stylesheet" type="text/css" />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
