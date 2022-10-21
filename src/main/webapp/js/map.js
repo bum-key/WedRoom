@@ -74,7 +74,7 @@ if (navigator.geolocation) {
 	navigator.geolocation.getCurrentPosition(function (position) {
 		var lat = position.coords.latitude, // 위도
 			lon = position.coords.longitude; // 경도
-
+	
 		var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
 			message = '<div style="padding:5px;">Im here</div>'; // 인포윈도우에 표시될 내용입니다
 

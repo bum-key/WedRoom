@@ -11,6 +11,7 @@
     <title>WedRoom</title>
     <link href="./css/notice.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
     <div class="wrap">
         <!-- 로고 -->
@@ -51,27 +52,37 @@
 	String id=null;
 		if(session.getAttribute("id") != null) {
 		id=(String)session.getAttribute("id");
-		System.out.println("id=>"+id);
 	}
-	if(id.equals("admin")) {
-		 
+	if(id==null){
 %>
- 				<div class="board-detail">
-                    <div class="board-write">
-                        <a href="/Project/notice_writeForm.do">글쓰기</a>
-                    </div>
-                </div>
-<%
-	}else{
+<script type="text/javascript">
+	alert("로그인 후 이용가능합니다!")
+	history.back()
+</script>
+<% } else{ 
 %>
-				<div class="board-detail">
-                    <div class="board-write" style="margin:20px;">
-                        <a href="/Project/notice_writeForm.do"></a>
-                    </div>
-                </div>
-<%
-	}
-%>
+	 
+	<%
+		if(id.equals("admin")) {
+			 
+	%>
+	 				<div class="board-detail">
+	                    <div class="board-write">
+	                        <a href="/Project/notice_writeForm.do">글쓰기</a>
+	                    </div>
+	                </div>
+	<%
+		}else{
+	%>
+					<div class="board-detail">
+	                    <div class="board-write" style="margin:20px;">
+	                        <a href="/Project/notice_writeForm.do"></a>
+	                    </div>
+	                </div>
+	<%
+		}
+	%>
+<%} %>
 <!--                 </div> -->
                 <div class="board">
 <c:if test="${pgList.count==0}">

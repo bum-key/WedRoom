@@ -185,9 +185,6 @@ public class RoomDAO {
 			if (rs.next()) {// 보여주는 결과가 있다면
 				room = makeRoomFromResult();
 				
-				MemberDTO member=new MemberDTO();
-				member.setId(rs.getString("id"));
-		        room.setMember(member);
 			}
 
 		} catch (Exception e) {

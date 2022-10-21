@@ -148,23 +148,7 @@ public class MateDAO {
 					sql += "and b.sleepinghabbit ='"+sleepingHabbit+"'";
 				if(showerTime !=null && !showerTime.equals("")) 
 					sql += "and b.showertime ='"+showerTime+"'";
-			/*
-				//만약 텍스트로 검색하는 기능을 할거면?
-				if(searchText != null && !searchText.equals("")) {
-					sql += "and (";
-					sql += "UPPER(b.start_time) like '%"+searchText+"%'";
-					sql += "or UPPER(b.end_time) like '%"+searchText+"%'";
-					sql += "or UPPER(b.sleeptime) like '%"+searchText+"%'";
-					sql += "or UPPER(b.smoking) like '%"+searchText+"%'";
-					sql += "or UPPER(b.pet) like '%"+searchText+"%'";
-					sql += "or UPPER(b.sleepinghabbit) like '%"+searchText+"%'";
-					sql += "or UPPER(b.showertime) like '%"+searchText+"%'";
-					sql += ")";
-				}
-				*/
-			//	sql += "and (rownum > ? and rownum <= ?)";
-																								//sql += "and (rownum >= "+start+" and rownum <= "+end +")";
-				sql += ",(SELECT @ROWNUM:=0 )  R \r\n"
+				sql += ",(SELECT @ROWNUM:=0 ) as  R \r\n"
 				        + "order by a.mate_no desc\r\n"
 				        + "limit ?,?";
 				
@@ -175,8 +159,6 @@ public class MateDAO {
 				pstmt.setInt(1,start-1);
 				pstmt.setInt(2,start-1+end);
 	          	
-//				pstmt.setInt(1, start);//mysql은 레코드순번이 내부적으로 0시작
-//				pstmt.setInt(2, end);//불러와서 담을 갯수(ex 10)
 				rs=pstmt.executeQuery();
 				if(rs.next()) {//보여주는 결과가 있다면
 					articleList=new ArrayList<MateDTO>(end);//10->end갯수만큼 데이터 담을 공간생성

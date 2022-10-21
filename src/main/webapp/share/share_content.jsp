@@ -16,7 +16,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>WedRoom</title>
 
-<link href="./css/main.css?af" rel="stylesheet" type="text/css" />
+<link href="./css/main.css?a" rel="stylesheet" type="text/css" />
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -35,40 +35,37 @@
 		<!-- 메뉴바 -->
 		<nav class="nav">
 			<ul class="menu">
-				<li><a href="share_list.do">쉐어하우스</a></li>
-				<li><a href="mate_list.do">룸메이트</a></li>
-				<li><a href="free_list.do">자유게시판</a></li>
-				<li><a href="notice_list.do">공지사항</a></li>
-				<li><a href="tendency.do">성향테스트</a></li>
+				<li class="menu1"><a href="share_list.do">쉐어하우스</a></li>
+				<li class="menu2"><a href="mate_list.do">룸메이트</a></li>
+				<li class="menu3"><a href="free_list.do">자유게시판</a></li>
+				<li class="menu4"><a href="notice_list.do">공지사항</a></li>
+				<li class="menu5"><a href="tendency.do">성향테스트</a></li>
 			</ul>
 		</nav>
 		<!-- body -->
 		
 		<%
-			/* RoomDTO room=new RoomDTO();
-			String fileRealname=room.getFileRealname(); */
-			int room_no=Integer.parseInt(request.getParameter("room_no"));
-
-			RoomDAO dbPro=new RoomDAO();
-			RoomDTO room=dbPro.getRoom(room_no); 
-			String fileRealname=room.getFileRealname();
-			/* 파일가져오기 */
-			
-			Integer r_id_no=room.getId_no();
-			System.out.println("room의 id_no->"+r_id_no);
-			
-			String id=null;
-			if(session.getAttribute("id") != null) {
-				id=(String)session.getAttribute("id");
-			}
-			
-			int id_no=memMgr.loginSession(id);
-			System.out.println("session.id=>"+id+", session.id_no=>"+id_no);
-			
-			
-			MemberDTO mem=new MemberDTO();
-			System.out.println("mem id->"+id);
-			if(r_id_no.equals(id_no)) {
+		int room_no=Integer.parseInt(request.getParameter("room_no"));
+		RoomDAO dbPro=new RoomDAO();
+		RoomDTO room=dbPro.getRoom(room_no); 
+		String fileRealname=room.getFileRealname();
+		/* 파일가져오기 */
+		
+		Integer r_id_no=room.getId_no();
+		//System.out.println("room의 id_no->"+r_id_no);
+		
+		String id=null;
+		if(session.getAttribute("id") != null) {
+			id=(String)session.getAttribute("id");
+		}
+		
+		int id_no=memMgr.loginSession(id);
+		//System.out.println("session.id=>"+id+", session.id_no=>"+id_no);
+		
+		
+		MemberDTO mem=new MemberDTO();
+		//System.out.println("mem id->"+id);
+		if(r_id_no.equals(id_no)) {
 		%>
 		<section>
 			<div class="section">
@@ -80,11 +77,9 @@
 								<tr>
 									<th>주소:</th>
 									<th>${room.address}</th>
+									<th></th>
 									<th>방 이름:</th>
 									<th>${room.title}</th>
-									<th>작성자 :</th>
-									<th>${member.id}</th>
-									<!-- <th>홍길동</th> -->
 								</tr>
 							</thead>
 							<tbody>
@@ -126,7 +121,7 @@
 							</tbody>
 						</table>
 						<div class="div_btnbox">
-							<input type="button" onclick="location.href='#'" value="연락하기"
+							<input type="button" onclick="location.href='https://open.kakao.com/o/sr1me4Ie'" value="연락하기"
 								class="btn btn-outline-warning btn-lg" /> 
 								
 								<input type="button"
@@ -159,8 +154,6 @@
 									<th>${room.address}</th>
 									<th>방 이름:</th>
 									<th>${room.title}</th>
-									<th>작성자 :</th>
-									<th>${member.id}</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -202,7 +195,7 @@
 							</tbody>
 						</table>
 						<div class="div_btnbox">
-							<input type="button" onclick="location.href='#'" value="연락하기"
+							<input type="button" onclick="location.href='https://open.kakao.com/o/sr1me4Ie'" value="연락하기"
 								class="btn btn-outline-warning btn-lg" /> 
 								
 								

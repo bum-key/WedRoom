@@ -57,7 +57,7 @@ System.out.println("LoginSuccess.jsp의 id_no"+id_no);
 <main class="form-signin">
   <form name="login" method="post" action="./login/login_Pro.jsp">
   <!-- <form name="login" method="post" action="login"> -->
-    <img class="mb-4" src="./image/logo.png" alt="" width="270" height="140">
+    <a href="./main.jsp"><img class="mb-4" src="./image/logo.png" alt="" width="270" height="140"></a>
 	<input type="hidden" name="id_no" value="<%=id_no%>">
     <div class="form-floating">
       <input type="text" class="form-control" name="id" id="id" placeholder="아이디">
@@ -71,9 +71,9 @@ System.out.println("LoginSuccess.jsp의 id_no"+id_no);
     <button class="w-100 btn btn-lg text-white" style="background-color:#57D2C4;" type="submit" onclick="loginCheck()">로그인</button>
     <div class="mb-4"></div>
     <div>
-      <a href="#">아이디/비밀번호 찾기</a>
+      <a href="./member/memberFind.jsp">아이디/비밀번호 찾기</a>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="#" onclick="memberRegister()">회원가입</a>
+      <a href="./member/agreement.jsp" onclick="memberRegister()">회원가입</a>
     </div>
     <p class="mt-5 mb-3 text-muted">&copy; WedRoom</p>
   </form>

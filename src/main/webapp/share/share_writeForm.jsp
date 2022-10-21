@@ -5,6 +5,8 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<jsp:useBean id="memMgr" class="member.MemberDAO" />
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -94,7 +96,18 @@
 		});
 	}
 </script> -->
-
+<%
+	RoomDTO room=new RoomDTO();
+	String filename=room.getFilename();
+	session.setAttribute("id_no", room.getId_no());
+	
+	String id=null;
+	if(session.getAttribute("id") != null) {
+		id=(String)session.getAttribute("id");
+	}
+	int id_no=memMgr.loginSession(id);
+	System.out.println("session.id=>"+id+", session.id_no=>"+id_no);
+%>
 <body>
 	<div class="wrap">
 		<!-- 로고 -->
@@ -121,15 +134,15 @@
 						<!-- onsubmit 이벤트="return 호출할 함수명(~)" -->
 						<h2 style="text-align: left; margin-left: 30px">방 생성하기</h2>
 						<br>
-
 						<form class="row g-6 validation-form" novalidate method="post"
 							name="writeform" action="/Project/share_writePro.do"
 							enctype="multipart/form-data" onsubmit="return writeSave()">
 							<!-- enctype="multipart/form-data" -->
 							<!-- 로그인 테이블 만들어지면 히든값 수정하기 -->
 							<input type="hidden" name="room_no" value="${room_no}">
-							<%-- <input type="hidden" name="id_no" value="${id_no}"> --%>
-							<input type="hidden" name="id_no" value="1"> <input
+							<input type="hidden" name="id_no" value="<%=id_no%>">
+							<!-- <input type="hidden" name="id_no" value="1">  -->
+							<input
 								type="hidden" name="view" value="0">
 
 							<!-- <div class="col-md-3">

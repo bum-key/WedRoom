@@ -41,8 +41,13 @@ if(session.getAttribute("id") != null) {
 }
 int id_no=memMgr.loginSession(id);
 boolean check=tenDao.checkTendency(id_no); 
+if(id==null){
 %>
-
+<script type="text/javascript">
+	alert("로그인 후 이용 가능합니다!")
+	//document.location('/login/Login.jsp')
+</script>
+<%} %>
  <body>
         <div class="wrap">
             <!-- 로고 -->
@@ -57,7 +62,7 @@ boolean check=tenDao.checkTendency(id_no);
 	                <li class="menu1"><a href="share_list.do">쉐어하우스</a></li>
 	                <li class="menu2"><a href="mate_list.do">룸메이트</a></li>
 	                <li class="menu3"><a href="free_list.do">자유게시판</a></li>
-	                <li class="menu4"><a href="notice.do">공지사항</a></li>
+	                <li class="menu4"><a href="notice_list.do">공지사항</a></li>
 <%if(check==true){%>
 				<li class="menu5"><a href="tendency_updateForm.do?id_no=<%=id_no%>">성향테스트</a></li>
 <%} else {%>

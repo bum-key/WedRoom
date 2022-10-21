@@ -19,16 +19,7 @@ public class RoomDTO {
 	private String filename; //파일
 	private String fileRealname; //서버에 저장되는 실제이름
 	
-	private MemberDTO member= new MemberDTO();
 
-	
-
-    public MemberDTO getMember() {
-        return member;
-    }
-    public void setMember(MemberDTO member) {
-        this.member = member;
-    }
     public String getFilename() {
         return filename;
     }

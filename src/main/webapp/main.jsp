@@ -103,8 +103,8 @@
         <!-- 메뉴 밑 이미지 -->
         <nav class="nav">
             <div class="img">
-                <a class="imgs"><img src="image/main_img.PNG"></a>
-                <button type="button" class="room_btn" onclick="location.href='mate_list.do'">바로가기</button>
+                <a href="./mate_list.do" class="imgs"><img src="image/main_img.PNG"></a>
+                <button type="button" class="room_btn" onclick="location.href='./mate_list.do'">바로가기</button>
             </div>
         </nav>
 <%

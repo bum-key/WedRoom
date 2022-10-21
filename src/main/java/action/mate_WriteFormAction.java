@@ -27,11 +27,6 @@ public class mate_WriteFormAction implements CommandAction {
 		
 		
 		int num=0;
-		   //Session의 아이디와 성별을 가져불러와 적용하기위한 부분
-//		   String loginUserID = "kkk";		//임시로 넣어둔 값(실제 DB에 있는 아이디) (나중에 밑에껄로 바꿔야함)
-//		   String loginUserID = session.getAttribute("id");   					 //Session을 Object로 담았을때
-//		   String loginUserID = session.getAttribute("id").toString();		 //Session을 String으로 담았을때
-//		   MemberDTO mem = (MemberDTO)session.getAttribute("loginUserInfo"); //Session이 DTO로 담았을때
 		    
 		   		   
 		   session = request.getSession();

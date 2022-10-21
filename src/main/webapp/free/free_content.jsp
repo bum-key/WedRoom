@@ -2,6 +2,8 @@
     pageEncoding="UTF-8" import="free.board.*,free.comment.*,java.util.ArrayList"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<jsp:useBean id="memMgr" class="member.MemberDAO" />
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -42,6 +44,8 @@
 	if(session.getAttribute("id") != null) {
 		id=(String)session.getAttribute("id");
 	}
+	int id_no=memMgr.loginSession(id);
+	System.out.println("session.id=>"+id+", session.id_no=>"+id_no);
 	if(id.equals(article.getId())) {
 %>
             <div class="board_control">
@@ -85,7 +89,7 @@
                 <form class="text" method="post" action="/Project/free_comwritePro.do?pageNum=${pageNum}&free_no=${article.free_no}&id=<%=id%>">
                		<input type="hidden" id="com_free_no" name="free_no" value="${article.free_no}">
                		<%-- <input type="hidden" name="id_no" value="${id_no}" > --%>
-            		<input type="hidden" name="id_no" value="1">
+            		<input type="hidden" name="id_no" value="<%=id_no%>">
                 	<input type="hidden" id="com_id" name="id" value="<%=id%>">
                 	<%-- <input type="text" name="id" placeholder="아이디를 입력해주세요."  value="<%=id%>"/> --%>
                     <textarea id="comment" name="content" title="댓글 입력" rows="2" placeholder="댓글을 입력해주세요."></textarea>  
