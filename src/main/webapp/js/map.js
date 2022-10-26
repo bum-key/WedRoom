@@ -41,7 +41,6 @@ function getLocation() {
 			redirectLocation,
 			geo_options
 		);
-		//navigator.geolocation.getCurrentPosition(successCallback,errorCallback,{ timeout: 10_000 });
 	} else {
 		location.href = "./share.do";
 	}
@@ -75,7 +74,7 @@ if (navigator.geolocation) {
 		var lat = position.coords.latitude, // 위도
 			lon = position.coords.longitude; // 경도
 	
-		var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+		var locPosition = new kakao.maps.LatLng(lat, lon), 
 			message = '<div style="padding:5px;">Im here</div>'; // 인포윈도우에 표시될 내용입니다
 
 		// 마커와 인포윈도우를 표시합니다
@@ -115,115 +114,4 @@ function displayMarker(locPosition, message) {
 	map.setCenter(locPosition);
 }
 
-//검색어 입력시 인포윈도우 생성
-/*
-$("#searchBtn").click(function () {
-	// 주소로 좌표를 검색합니다
-	geocoder.addressSearch($("#searchtext").val(), function (result, status) {
-		// 정상적으로 검색이 완료됐으면
-		if (status === kakao.maps.services.Status.OK) {
-			var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-			// 추출한 좌표를 통해 도로명 주소 추출
-			let lat = result[0].y;
-			alert(lat);
-			let lng = result[0].x;
-			getAddr(lat, lng);
-			function getAddr(lat, lng) {
-				let geocoder = new kakao.maps.services.Geocoder();
-
-				let coord = new kakao.maps.LatLng(lat, lng);
-				let callback = function (result, status) {
-					if (status === kakao.maps.services.Status.OK) {
-						// 추출한 도로명 주소를 해당 input의 value값으로 적용
-						$("#searchtext").val(
-							result[0].road_address.address_name,
-						);
-					}
-				};
-				geocoder.coord2Address(
-					coord.getLng(),
-					coord.getLat(),
-					callback,
-				);
-			}
-
-			var imageSrc2 =
-					"https://lh3.google.com/u/0/d/1K6YKCzYB11K2K2QFBdxioIgbbNFxZyD7=w2880-h1382-iv1", // 마커이미지의 주소입니다
-				imageSize2 = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
-				imageOption2 = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-
-			// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-			var markerImage2 = new kakao.maps.MarkerImage(
-				imageSrc2,
-				imageSize2,
-				imageOption2,
-			);
-
-			// 결과값으로 받은 위치를 마커로 표시합니다
-			var marker = new kakao.maps.Marker({
-				map: map,
-				position: coords,
-				image: markerImage2,
-			});
-
-			// 인포윈도우로 장소에 대한 설명을 표시합니다
-			var infowindow = new kakao.maps.InfoWindow({
-				content:
-					'<div style="width:150px;text-align:center;padding:6px 0;">검색한 장소</div>',
-			});
-			infowindow.open(map, marker);
-
-			// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-			map.setCenter(coords);
-		}
-	});
-});
-*/
-//0920 좌표값을 통한 마커찍기----------------------
-/*
-var positions = [
-	{
-		title: "청구역",
-		latlng: new kakao.maps.LatLng(37.560130916629525, 127.01385325946106),
-	},
-	{
-		title: "삼각지역",
-		latlng: new kakao.maps.LatLng(37.53533340436744, 126.97411289191928),
-	},
-	{
-		title: "용산구청",
-		latlng: new kakao.maps.LatLng(37.53216434315121, 126.9905869043918),
-	},
-	{
-		title: "서울숲",
-		latlng: new kakao.maps.LatLng(37.54498854551797, 127.03892619513285),
-	},
-];
-for (var i = 0; i < positions.length; i++) {
-	var marker = new kakao.maps.Marker({
-		map: map, // 마커를 표시할 지도
-		position: positions[i].latlng, // 마커를 표시할 위치
-		title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-	});
-}
-*/
-//-------------------------------------------------
-//0920 디비연결------------------
-/*
-async function getDataSet(address){
-	let qs=address;
-	if(!qs){
-		qs="";
-	}
-	const dataSet = await axios({ //서버에 접근
-		method:"get",
-		url:`http://http://localhost:8080/Project/share.do/address=${qs}`,
-		headers:{},
-		data:{}
-	})
-	return dataSet.data.result;
-}
-getDataSet();
-*/
-//----------------수정해야함

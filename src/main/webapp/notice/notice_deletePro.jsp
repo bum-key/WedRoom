@@ -6,5 +6,5 @@
 <script>
         alert("게시글이 삭제되었습니다.");
 </script>
-<meta http-equiv="Refresh" content="0;url=/Project/free_list.do?pageNum=${pageNum}">
+<meta http-equiv="Refresh" content="0;url=/Project/notice_list.do?pageNum=${pageNum}">
 </c:if>

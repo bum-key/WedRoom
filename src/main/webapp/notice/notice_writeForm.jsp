@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"  import="notice.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:useBean id="memMgr" class="member.MemberDAO" />
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -17,6 +18,8 @@
 	if(session.getAttribute("id") != null) {
 		id=(String)session.getAttribute("id");
 	}
+	int id_no=memMgr.loginSession(id);
+
 %>
     <div class="wrap">
         <!-- 로고 -->
@@ -40,8 +43,8 @@
             <p class="tiele">공지게시판 작성</p>
             <form method="post" name="notice_write" action="/Project/notice_writePro.do">
             	<input type="hidden" name="notice_no" value="${notice_no}" >
-            	<%-- <input type="hidden" name="id_no" value="${id_no}" > --%>
-            	<input type="hidden" name="id_no" value="1">
+            	<input type="hidden" name="id_no" value="<%=id_no%>">
+            	<!-- <input type="hidden" name="id_no" value="1"> -->
                 <table class="write">
                     <tr>
                         <td class="write_id"><strong>아이디</strong></td>

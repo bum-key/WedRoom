@@ -14,7 +14,7 @@ public class notice_DeleteProAction implements CommandAction {
 	    
 		//추가
 	    int notice_no=Integer.parseInt(request.getParameter("notice_no"));
-	    //System.out.println("notice_deletePro.do의 notice_no=>"+notice_no+",pageNum=>"+pageNum);
+	    System.out.println("notice_deletePro.do의 notice_no=>"+notice_no+",pageNum=>"+pageNum);
 	    
 	    NoticeDAO dbPro=new NoticeDAO();
 	    int check=dbPro.deleteArticle(notice_no);
